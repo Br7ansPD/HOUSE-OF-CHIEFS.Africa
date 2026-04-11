@@ -134,7 +134,7 @@
         <h1>🕊️ HOUSE-OF-CHIEFS.Africa 🕊️</h1>
         
         <p class="greeting">
-            We greet you with One Hand on our Heart, and the Other Outstretched 🇿🇲
+            We greet you with One Hand on our Heart, and the Other Outstretched
         </p>
 
         <div class="sub-greeting">
@@ -145,7 +145,7 @@
     </div>
 
     <div class="footer">
-        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.003 | PLANET-CAN Technologies
+        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.004 | PLANET-CAN Technologies
     </div>
 
     <script type="module">
@@ -166,6 +166,21 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
+        // Filter Array: The 54 African Nations
+        // Note: Ensure these names perfectly match the 'name' field in your Firebase database.
+        const africanNations = [
+            "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", 
+            "Cabo Verde", "Cameroon", "Central African Republic", "Chad", "Comoros", 
+            "Congo", "Democratic Republic of the Congo", "Djibouti", "Egypt", 
+            "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Gambia", 
+            "Ghana", "Guinea", "Guinea-Bissau", "Ivory Coast", "Kenya", "Lesotho", 
+            "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", 
+            "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", 
+            "Sao Tome and Principe", "Senegal", "Seychelles", "Sierra Leone", "Somalia", 
+            "South Africa", "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", 
+            "Uganda", "Zambia", "Zimbabwe"
+        ];
+
         // Matrix Generation Engine
         async function buildMatrix() {
             const grid = document.getElementById('matrix-grid');
@@ -176,8 +191,8 @@
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
                     
-                    // Only build a card if it has the required identification
-                    if (data.id && data.name) {
+                    // Only build the card if the nation is explicitly in the African filter array
+                    if (data.id && data.name && africanNations.includes(data.name)) {
                         const cardUrl = `https://planetcan.international/identity.html?id=${data.id}`;
                         const logoElement = data.logo ? `<img src="${data.logo}" class="card-logo" alt="Vault Logo">` : `<div></div>`;
                         const flagElement = data.flag ? `<img src="${data.flag}" class="card-flag" alt="${data.name} Flag">` : `<div></div>`;
