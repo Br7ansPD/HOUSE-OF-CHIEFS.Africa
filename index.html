@@ -16,7 +16,7 @@
     <meta name="twitter:description" content="We greet you with One Hand on our Heart, and the Other Outstretched.">
     <meta name="twitter:image" content="https://houseofchiefs.africa/assets/apex-ultra-choice-whatsapp.jpg">
 
-    <link id="dynamic-favicon" rel="icon" type="image/png" href="assets/pcan-favicon.png">
+    <link id="dynamic-favicon" rel="icon" type="image/png" href="assets/pcan-favicon.png?v=titan-bypass">
 
     <style>
         /* Regal styling and layout */
@@ -225,7 +225,7 @@
     </div>
 
     <div class="footer">
-        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.008 | PLANET-CAN Technologies
+        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.009 | PLANET-CAN Technologies
     </div>
 
     <script type="module">
@@ -314,18 +314,27 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const favicons = [
-                "assets/pcan-favicon.png",
-                "assets/pcan-tech-favicon.png",
-                "assets/souls7ven-favicon.jpg"
+                "assets/pcan-favicon.png?v=titan-bypass",
+                "assets/pcan-tech-favicon.png?v=titan-bypass",
+                "assets/souls7ven-favicon.jpg?v=titan-bypass"
             ];
             let favIndex = 0;
 
-            let faviconLink = document.getElementById('dynamic-favicon');
-
             setInterval(() => {
                 favIndex = (favIndex + 1) % favicons.length;
-                faviconLink.type = favicons[favIndex].endsWith('.jpg') ? 'image/jpeg' : 'image/png';
-                faviconLink.href = favicons[favIndex];
+                
+                // Aggressively hunt down and destroy any existing icon tags
+                document.querySelectorAll("link[rel*='icon']").forEach(icon => icon.remove());
+                
+                // Forge a completely new DOM node to force the browser to redraw
+                let newFavicon = document.createElement('link');
+                newFavicon.id = 'dynamic-favicon';
+                newFavicon.rel = 'icon'; 
+                newFavicon.type = favicons[favIndex].includes('.jpg') ? 'image/jpeg' : 'image/png';
+                newFavicon.href = favicons[favIndex];
+                
+                // Inject straight into the head
+                document.head.appendChild(newFavicon);
             }, 1500); 
         });
     </script>
