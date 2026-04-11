@@ -56,7 +56,7 @@
         .decree-container {
             max-width: 900px;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px; 
             padding: 30px;
             background: rgba(212, 175, 55, 0.03);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -78,6 +78,77 @@
             font-weight: 300;
             line-height: 1.8;
             color: #e0e0e0;
+        }
+
+        /* REGAL SANCTUM MODULE (Chieftainess Lesa) */
+        .regal-sanctum-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 50px 40px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(5, 10, 7, 0) 70%);
+            border-top: 2px dashed rgba(212, 175, 55, 0.2);
+            border-bottom: 2px dashed rgba(212, 175, 55, 0.2);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 10px 40px rgba(0,0,0,0.6);
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+
+        .lesa-medallion {
+            width: 280px; 
+            height: 280px;
+            border-radius: 50%;
+            border: 12px solid #d4af37; 
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(0,0,0,0.6);
+            background-color: #ffffff; 
+            background-image: url('assets/lesa.jpeg');
+            background-size: cover;
+            background-position: center top; 
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .lesa-medallion:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.6), inset 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        .regal-titles {
+            color: #ffffff;
+            font-size: 1.6rem;
+            line-height: 1.4;
+            font-weight: 300;
+            max-width: 800px;
+            margin-bottom: 25px;
+        }
+        
+        .royal-highness {
+            font-weight: 700;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        
+        .one-nation-zambia {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #d4af37;
+            letter-spacing: 1.5px;
+        }
+
+        .royal-bio {
+            max-width: 850px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #cccccc;
+            font-weight: 300;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 25px;
         }
 
         /* Matrix Section Headers */
@@ -192,6 +263,13 @@
         }
 
         /* Responsive adjustments */
+        @media (max-width: 800px) {
+            .lesa-medallion { width: 220px; height: 220px; border-width: 8px;}
+            .regal-titles { font-size: 1.3rem;}
+            .regal-sanctum-container { padding: 40px 20px; }
+            .royal-bio { font-size: 1.05rem; }
+        }
+        
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
             .matrix-grid { grid-template-columns: 1fr; }
@@ -200,6 +278,7 @@
             .card-left { width: 40%; }
             .card-center { width: 20%; }
             .card-right { width: 40%; }
+            .one-nation-zambia { font-size: 1rem; }
         }
     </style>
 </head>
@@ -217,6 +296,17 @@
             </div>
         </div>
 
+        <div class="regal-sanctum-container">
+            <div class="lesa-medallion" title="Her Royal Highness Chieftainess Lesa"></div>
+            <div class="regal-titles">
+                <div class="royal-highness">Her Royal Highness Chieftainess Lesa</div>
+                <div class="one-nation-zambia">House of Chiefs | Copperbelt Province | Kingdom of One-Nation Zambia</div>
+            </div>
+            <div class="royal-bio">
+                Born on 5 May 1957, at 68 years of age, Her Royal Highness stands as a rare and profound leader, echoing the transformative spirits of President Hakainde Hichilema and Nelson Mandela. Behind the royal title is a deeply authentic soul who sits in the quiet of the garden, sharing profound wisdom for hours. She serves as the vital bridge between two eras: ensuring her people embrace modernisation and top-tier technology, while remaining unshakeably rooted in their tribal cultures and freedoms. She is a leader who breathes in fire and blows out peace and trust. Our Chieftainess possesses boundless wisdom and limitless energy, leaving a deep, spearhead impression upon the hearts, minds, and souls of her people.
+            </div>
+        </div>
+
         <div class="section-header">LIVE JURISDICTIONS</div>
         <div id="matrix-grid-live" class="matrix-grid"></div>
 
@@ -225,7 +315,7 @@
     </div>
 
     <div class="footer">
-        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.010 | PLANET-CAN Technologies
+        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.013 | PLANET-CAN Technologies
     </div>
 
     <script type="module">
