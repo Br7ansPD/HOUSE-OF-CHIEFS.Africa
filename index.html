@@ -225,7 +225,7 @@
     </div>
 
     <div class="footer">
-        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.009 | PLANET-CAN Technologies
+        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.010 | PLANET-CAN Technologies
     </div>
 
     <script type="module">
@@ -316,7 +316,7 @@
             const favicons = [
                 "assets/pcan-favicon.png?v=titan-bypass",
                 "assets/pcan-tech-favicon.png?v=titan-bypass",
-                "assets/souls7ven-favicon.jpg?v=titan-bypass"
+                "assets/souls7ven-favicon.png?v=titan-bypass"
             ];
             let favIndex = 0;
 
@@ -330,7 +330,7 @@
                 let newFavicon = document.createElement('link');
                 newFavicon.id = 'dynamic-favicon';
                 newFavicon.rel = 'icon'; 
-                newFavicon.type = favicons[favIndex].includes('.jpg') ? 'image/jpeg' : 'image/png';
+                newFavicon.type = 'image/png';
                 newFavicon.href = favicons[favIndex];
                 
                 // Inject straight into the head
