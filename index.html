@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOUSE-OF-CHIEFS.Africa</title>
+    
+    <meta property="og:title" content="🕊️ HOUSE-OF-CHIEFS.Africa 🕊️">
+    <meta property="og:description" content="We greet you with One Hand on our Heart, and the Other Outstretched. The titan-spear and shield of One-Nation Zambia.">
+    <meta property="og:image" content="https://houseofchiefs.africa/assets/apex-ultra-choice-whatsapp.jpg">
+    <meta property="og:url" content="https://houseofchiefs.africa">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="🕊️ HOUSE-OF-CHIEFS.Africa 🕊️">
+    <meta name="twitter:description" content="We greet you with One Hand on our Heart, and the Other Outstretched.">
+    <meta name="twitter:image" content="https://houseofchiefs.africa/assets/apex-ultra-choice-whatsapp.jpg">
+
+    <link id="dynamic-favicon" rel="icon" type="image/png" href="assets/pcan-favicon.png">
+
     <style>
         /* Regal styling and layout */
         body {
@@ -211,7 +225,7 @@
     </div>
 
     <div class="footer">
-        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.006 | PLANET-CAN Technologies
+        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.007 | PLANET-CAN Technologies
     </div>
 
     <script type="module">
@@ -295,6 +309,32 @@
 
         // Ignite the engine
         buildMatrix();
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const favicons = [
+                "assets/pcan-favicon.png",
+                "assets/pcan-tech-favicon.png",
+                "assets/souls7ven-favicon.jpg"
+            ];
+            let favIndex = 0;
+
+            setInterval(() => {
+                favIndex = (favIndex + 1) % favicons.length;
+                let existingFavicon = document.getElementById('dynamic-favicon');
+                if (existingFavicon) {
+                    existingFavicon.remove();
+                }
+                let newFavicon = document.createElement('link');
+                newFavicon.id = 'dynamic-favicon';
+                newFavicon.rel = 'icon';
+                // Dynamically assign image type based on file extension
+                newFavicon.type = favicons[favIndex].endsWith('.jpg') ? 'image/jpeg' : 'image/png';
+                newFavicon.href = favicons[favIndex];
+                document.head.appendChild(newFavicon);
+            }, 1500); 
+        });
     </script>
 </body>
 </html>
