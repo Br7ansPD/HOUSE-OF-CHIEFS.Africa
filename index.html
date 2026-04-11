@@ -25,15 +25,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
-            max-width: 900px;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 1200px;
+            box-sizing: border-box;
         }
 
         h1 {
             font-size: 3rem;
             color: #d4af37; /* Elegant Gold */
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -41,20 +42,71 @@
         .greeting {
             font-size: 1.8rem;
             font-weight: 300;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             line-height: 1.6;
             color: #f4f4f4;
         }
 
-        .flags-container {
-            font-size: 2.2rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.2); /* Subtle gold border */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        .sub-greeting {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #d4af37;
+            margin-bottom: 50px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Sanctum-Gate Matrix Grid */
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Individual Jurisdiction Card */
+        .matrix-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .matrix-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .card-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .card-flag {
+            width: 35px;
+            height: auto;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .card-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #d4af37;
+            text-transform: uppercase;
+            text-align: right;
+            flex-grow: 1;
+            margin-left: 15px;
         }
 
         .footer {
@@ -67,11 +119,12 @@
             text-transform: uppercase;
         }
 
-        /* Responsive design for mobile phones */
+        /* Responsive adjustments */
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
             .greeting { font-size: 1.3rem; }
-            .flags-container { font-size: 1.6rem; padding: 15px;}
+            .sub-greeting { font-size: 1.1rem; }
+            .matrix-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -84,14 +137,69 @@
             We greet you with One Hand on our Heart, and the Other Outstretched 🇿🇲
         </p>
 
-        <div class="flags-container">
-            🇩🇿 🇦🇴 🇧🇯 🇧🇼 🇧🇫 🇧🇮 🇨🇻 🇨🇲 🇨🇫 🇹🇩 🇰🇲 🇨🇬 🇨🇩 🇩🇯 🇪🇬 🇬🇶 🇪🇷 🇸🇿 🇪🇹 🇬🇦 🇬🇲 🇬🇭 🇬🇳 🇬🇼 🇨🇮 🇰🇪 🇱🇸 🇱🇷 🇱🇾 🇲🇬 🇲🇼 🇲🇱 🇲🇷 🇲🇺 🇲🇦 🇲🇿 🇳🇦 🇳🇪 🇳🇬 🇷🇼 🇸🇹 🇸🇳 🇸🇨 🇸🇱 🇸🇴 🇿🇦 🇸🇸 🇸🇩 🇹🇿 🇹🇬 🇹🇳 🇺🇬 🇿🇲 🇿🇼
+        <div class="sub-greeting">
+            Our next journey for the world is beginning
         </div>
+
+        <div id="matrix-grid" class="matrix-grid"></div>
     </div>
 
     <div class="footer">
-        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.002 | PLANET-CAN Technologies
+        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.003 | PLANET-CAN Technologies
     </div>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBFkUVrDqZYDESB--TPHR_1-M7n01kLph4",
+            authDomain: "alchemifusion-firebase.firebaseapp.com",
+            projectId: "alchemifusion-firebase",
+            storageBucket: "alchemifusion-firebase.firebasestorage.app",
+            messagingSenderId: "228635563504",
+            appId: "1:228635563504:web:185f566b2d9b3afcf87935"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Matrix Generation Engine
+        async function buildMatrix() {
+            const grid = document.getElementById('matrix-grid');
+            
+            try {
+                const querySnapshot = await getDocs(collection(db, "jurisdictions"));
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    
+                    // Only build a card if it has the required identification
+                    if (data.id && data.name) {
+                        const cardUrl = `https://planetcan.international/identity.html?id=${data.id}`;
+                        const logoElement = data.logo ? `<img src="${data.logo}" class="card-logo" alt="Vault Logo">` : `<div></div>`;
+                        const flagElement = data.flag ? `<img src="${data.flag}" class="card-flag" alt="${data.name} Flag">` : `<div></div>`;
+                        
+                        const cardHTML = `
+                            <a href="${cardUrl}" class="matrix-card">
+                                ${logoElement}
+                                ${flagElement}
+                                <span class="card-name">${data.name}</span>
+                            </a>
+                        `;
+                        
+                        grid.innerHTML += cardHTML;
+                    }
+                });
+            } catch (error) {
+                console.error("Matrix Access Denied. Verify database permissions.", error);
+            }
+        }
+
+        // Ignite the engine
+        buildMatrix();
+    </script>
 </body>
 </html>
