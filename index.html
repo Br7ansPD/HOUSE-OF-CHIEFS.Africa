@@ -225,7 +225,7 @@
     </div>
 
     <div class="footer">
-        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.007 | PLANET-CAN Technologies
+        HOUSE OF CHIEFS | PLANET-CAN GEN 11.2 V101.001.008 | PLANET-CAN Technologies
     </div>
 
     <script type="module">
@@ -320,19 +320,12 @@
             ];
             let favIndex = 0;
 
+            let faviconLink = document.getElementById('dynamic-favicon');
+
             setInterval(() => {
                 favIndex = (favIndex + 1) % favicons.length;
-                let existingFavicon = document.getElementById('dynamic-favicon');
-                if (existingFavicon) {
-                    existingFavicon.remove();
-                }
-                let newFavicon = document.createElement('link');
-                newFavicon.id = 'dynamic-favicon';
-                newFavicon.rel = 'icon';
-                // Dynamically assign image type based on file extension
-                newFavicon.type = favicons[favIndex].endsWith('.jpg') ? 'image/jpeg' : 'image/png';
-                newFavicon.href = favicons[favIndex];
-                document.head.appendChild(newFavicon);
+                faviconLink.type = favicons[favIndex].endsWith('.jpg') ? 'image/jpeg' : 'image/png';
+                faviconLink.href = favicons[favIndex];
             }, 1500); 
         });
     </script>
