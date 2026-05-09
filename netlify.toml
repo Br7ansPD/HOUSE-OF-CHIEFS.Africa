@@ -1,0 +1,16 @@
+# [netlify.toml] | Version: V026.003.005 | BORDER CONTROL & RADAR IGNITION
+
+[build]
+  # 1. THE IGNITION: Run the radar script to build the manifest before deploying
+  command = "node forge-manifest.js"
+  
+  # Publish the root directory since this is a static site
+  publish = "."
+
+# 2. THE DIPLOMATIC VISA (CORS)
+# Allow the P-TECH Dashboard to read the manifest across the domain border
+[[headers]]
+  for = "/fleet-manifest.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
