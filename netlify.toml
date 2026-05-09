@@ -1,4 +1,4 @@
-# [netlify.toml] | Version: V027.001.001 | BORDER CONTROL & RADAR IGNITION
+# [netlify.toml] | Version: V027.001.006 | BORDER CONTROL & RADAR IGNITION
 
 [build]
   # 1. THE IGNITION: Run the radar script to build the manifest before deploying
