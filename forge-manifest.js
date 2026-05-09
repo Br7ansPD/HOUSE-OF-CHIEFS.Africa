@@ -1,4 +1,4 @@
-/* [forge-manifest.js] | Version: V027.001.001 | HALO-AURA CLOUD TRUTH GENERATOR */
+/* [forge-manifest.js] | Version: V027.001.002 | HALO-AURA CLOUD TRUTH GENERATOR */
 
 const fs = require('fs');
 const path = require('path');
@@ -37,7 +37,7 @@ function extractVersion(filePath) {
 }
 
 function buildManifest() {
-    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V027.001.001)...");
+    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V027.001.002)...");
     const allFiles = scanFiles(DIRECTORY_TO_SCAN);
     const manifest = [];
 
@@ -50,18 +50,20 @@ function buildManifest() {
 
             const version = extractVersion(file);
             
-            if (version !== "UNTRACKED" && version !== "ERROR") {
-                // Normalize file path format for the dashboard radar
-                const normalizedPath = file.replace(/\\/g, '/');
-                // Strip the leading './' if present
-                let finalPath = normalizedPath.startsWith('./') ? normalizedPath.slice(2) : normalizedPath;
-                
-                manifest.push({
-                    fileNode: '/' + finalPath, // Prepend slash to match UI logic
-                    cloudTruth: version,
-                    lastForged: new Date().toISOString()
-                });
-            }
+            // V027.001.002 FIX: The Blindspot has been completely removed. 
+            // We now log EVERY valid file to the manifest, even if it is "UNTRACKED", 
+            // so the P-TECH Dashboard can target it for an Omni-Wash.
+            
+            // Normalize file path format for the dashboard radar
+            const normalizedPath = file.replace(/\\/g, '/');
+            // Strip the leading './' if present
+            let finalPath = normalizedPath.startsWith('./') ? normalizedPath.slice(2) : normalizedPath;
+            
+            manifest.push({
+                fileNode: '/' + finalPath, // Prepend slash to match UI logic
+                cloudTruth: version,
+                lastForged: new Date().toISOString()
+            });
         }
     }
 
