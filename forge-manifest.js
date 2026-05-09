@@ -1,4 +1,4 @@
-/* [forge-manifest.js] | Version: V026.003.005 | HALO-AURA CLOUD TRUTH GENERATOR */
+/* [forge-manifest.js] | Version: V027.001.001 | HALO-AURA CLOUD TRUTH GENERATOR */
 
 const fs = require('fs');
 const path = require('path');
@@ -37,7 +37,7 @@ function extractVersion(filePath) {
 }
 
 function buildManifest() {
-    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V026.003.005)...");
+    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V027.001.001)...");
     const allFiles = scanFiles(DIRECTORY_TO_SCAN);
     const manifest = [];
 
