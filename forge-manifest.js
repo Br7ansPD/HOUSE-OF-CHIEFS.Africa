@@ -1,4 +1,4 @@
-/* [forge-manifest.js] | Version: V28.001.001 | HALO-AURA CLOUD TRUTH GENERATOR */
+/* [forge-manifest.js] | Version: V027.004.001 | HALO-AURA CLOUD TRUTH GENERATOR */
 
 const fs = require('fs');
 const path = require('path');
@@ -37,7 +37,7 @@ function extractVersion(filePath) {
 }
 
 function buildManifest() {
-    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V28.001.001)...");
+    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V027.004.001)...");
     const allFiles = scanFiles(DIRECTORY_TO_SCAN);
     const manifest = [];
 
@@ -50,7 +50,7 @@ function buildManifest() {
 
             const version = extractVersion(file);
             
-            // V28.001.001 FIX: The Blindspot has been completely removed. 
+            // V027.004.001 FIX: The Blindspot has been completely removed. 
             // We now log EVERY valid file to the manifest, even if it is "UNTRACKED", 
             // so the P-TECH Dashboard can target it for an Omni-Wash.
             
