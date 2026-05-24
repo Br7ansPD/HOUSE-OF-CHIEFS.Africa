@@ -1,16 +1,27 @@
-# [netlify.toml] | Version: V41.001.001 | BORDER CONTROL & RADAR IGNITION
+# =========================================================================
+# NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION
+# FILE: netlify.toml
+# TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
+# VERSION: GEN 11.2 V50.010.001
+# =========================================================================
 
 [build]
-  # 1. THE IGNITION: Run the radar script to build the manifest before deploying
-  command = "node forge-manifest.js"
-  
-  # Publish the root directory since this is a static site
+  command = "npm install && node forge-manifest.js"
   publish = "."
+  functions = "netlify/functions"
 
-# 2. THE DIPLOMATIC VISA (CORS)
-# Allow the P-TECH Dashboard to read the manifest across the domain border
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Access-Control-Allow-Origin = "*"
+
 [[headers]]
   for = "/fleet-manifest.json"
   [headers.values]
-    Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, OPTIONS"
+    Access-Control-Allow-Origin = "*"
