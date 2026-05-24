@@ -1,13 +1,17 @@
-/* [forge-manifest.js] | Version: V41.001.001 | HALO-AURA CLOUD TRUTH GENERATOR */
+/**
+ * =========================================================================
+ * NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION
+ * FILE: forge-manifest.js
+ * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
+ * VERSION: GEN 11.2 V50.010.001
+ * =========================================================================
+ */
 
 const fs = require('fs');
 const path = require('path');
-
 const DIRECTORY_TO_SCAN = './';
 const MANIFEST_FILE = 'fleet-manifest.json';
-
-// Directories to ignore during the deep scan to save build time
-const IGNORE_DIRS = ['node_modules', '.git', 'assets'];
+const IGNORE_DIRS = ['node_modules', '.git'];
 
 function scanFiles(dir, fileList = []) {
     const files = fs.readdirSync(dir);
@@ -22,54 +26,44 @@ function scanFiles(dir, fileList = []) {
     return fileList;
 }
 
-function extractVersion(filePath) {
+function extractMetadata(filePath, ext) {
+    let metadata = { cloudTruth: "UNTRACKED", survivalWeight: "FOUNDATION", apexSolutionTitle: "NEXUS COMPONENT", campusVisibility: false };
+    if (ext === '.mp4' || ext === '.pdf') { metadata.survivalWeight = "BRIEFCASE"; }
     try {
-        const content = fs.readFileSync(filePath, 'utf8');
-        
-        // GLOBAL RADAR SWEEP: Hunt for the strict semantic version string anywhere in the file
-        const versionMatch = content.match(/(V[0-9]{2,3}\.[0-9]{3}\.[0-9]{3})/);
-        if (versionMatch) return versionMatch[1];
-        
-        return "UNTRACKED";
-    } catch (err) {
-        return "ERROR";
-    }
+        if (['.html', '.js', '.json', '.toml'].includes(ext)) {
+            const content = fs.readFileSync(filePath, 'utf8');
+            const versionMatch = content.match(/(V[0-9]{2,3}\.[0-9]{3}\.[0-9]{3})/);
+            if (versionMatch) metadata.cloudTruth = versionMatch[1];
+            const weightMatch = content.match(/<meta name="survival-weight" content="([^"]+)">/);
+            if (weightMatch) metadata.survivalWeight = weightMatch[1];
+            const titleMatch = content.match(/<meta name="apex-solution-title" content="([^"]+)">/);
+            if (titleMatch) metadata.apexSolutionTitle = titleMatch[1];
+            const visMatch = content.match(/<meta name="campus-visibility" content="([^"]+)">/);
+            if (visMatch && visMatch[1] === 'true') metadata.campusVisibility = true;
+        }
+    } catch (err) {}
+    return metadata;
 }
 
 function buildManifest() {
-    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V41.001.001)...");
+    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V50.010.001)...");
     const allFiles = scanFiles(DIRECTORY_TO_SCAN);
     const manifest = [];
-
+    const allowedExtensions = ['.html', '.js', '.toml', '.json', '.jpg', '.png', '.mp4', '.pdf', '.css'];
     for (const file of allFiles) {
-        // Track core infrastructure
-        if (file.endsWith('.html') || file.endsWith('.js') || file.endsWith('.toml') || file.endsWith('.json')) {
-            
-            // Safety Override: Do not scan the output manifest itself
+        const ext = path.extname(file).toLowerCase();
+        if (allowedExtensions.includes(ext)) {
             if (file.endsWith(MANIFEST_FILE)) continue;
-
-            const version = extractVersion(file);
-            
-            // V41.001.001 FIX: The Blindspot has been completely removed. 
-            // We now log EVERY valid file to the manifest, even if it is "UNTRACKED", 
-            // so the P-TECH Dashboard can target it for an Omni-Wash.
-            
-            // Normalize file path format for the dashboard radar
-            const normalizedPath = file.replace(/\\/g, '/');
-            // Strip the leading './' if present
+            const metadata = extractMetadata(file, ext);
+            const normalizedPath = file.replace(/\\\\/g, '/');
             let finalPath = normalizedPath.startsWith('./') ? normalizedPath.slice(2) : normalizedPath;
-            
             manifest.push({
-                fileNode: '/' + finalPath, // Prepend slash to match UI logic
-                cloudTruth: version,
-                lastForged: new Date().toISOString()
+                fileNode: '/' + finalPath, cloudTruth: metadata.cloudTruth, survivalWeight: metadata.survivalWeight,
+                apexSolutionTitle: metadata.apexSolutionTitle, campusVisibility: metadata.campusVisibility, lastForged: new Date().toISOString()
             });
         }
     }
-
-    // Write the final JSON manifest for the Netlify server to host
     fs.writeFileSync(MANIFEST_FILE, JSON.stringify(manifest, null, 2));
     console.log(`[FORGE] Manifest forged successfully. Tracked ${manifest.length} nodes.`);
 }
-
 buildManifest();
