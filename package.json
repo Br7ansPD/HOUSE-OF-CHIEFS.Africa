@@ -1,0 +1,12 @@
+{
+  "_SOVEREIGN_FINGERPRINT": "NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION",
+  "_FILE": "package.json",
+  "_TARGET_REPO": "PLANETCAN-house-of-chiefs-GEN11.V6",
+  "_VERSION": "GEN 11.2 V50.010.001",
+  "name": "titan-house-of-chiefs",
+  "version": "50.010.001",
+  "dependencies": {
+    "firebase-admin": "^11.11.0",
+    "node-fetch": "^2.7.0"
+  }
+}
