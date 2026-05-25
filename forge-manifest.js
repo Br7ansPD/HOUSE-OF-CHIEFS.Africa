@@ -3,7 +3,7 @@
  * NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION
  * FILE: forge-manifest.js
  * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
- * VERSION: GEN 11.2 V50.010.001
+ * VERSION: GEN 11.2 V50.011.001
  * =========================================================================
  */
 
@@ -46,20 +46,34 @@ function extractMetadata(filePath, ext) {
 }
 
 function buildManifest() {
-    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V50.010.001)...");
+    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V50.011.001)...");
     const allFiles = scanFiles(DIRECTORY_TO_SCAN);
     const manifest = [];
-    const allowedExtensions = ['.html', '.js', '.toml', '.json', '.jpg', '.png', '.mp4', '.pdf', '.css'];
+    const allowedExtensions = ['.html', '.js', '.toml', '.json', '.jpg', '.png', '.mp4', '.pdf', '.css', '.ico', '.webp', '.jpeg'];
+    
     for (const file of allFiles) {
         const ext = path.extname(file).toLowerCase();
         if (allowedExtensions.includes(ext)) {
-            if (file.endsWith(MANIFEST_FILE)) continue;
+            
+            // [!] THE FIX: Explicitly ignore manifest, package files, and comms from version tracking
+            if (file.endsWith(MANIFEST_FILE) || 
+                file.endsWith('package-lock.json') || 
+                file.endsWith('package.json') || 
+                file.endsWith('halo-comms.json')) {
+                continue;
+            }
+
             const metadata = extractMetadata(file, ext);
-            const normalizedPath = file.replace(/\\\\/g, '/');
+            const normalizedPath = file.replace(/\\/g, '/');
             let finalPath = normalizedPath.startsWith('./') ? normalizedPath.slice(2) : normalizedPath;
+            
             manifest.push({
-                fileNode: '/' + finalPath, cloudTruth: metadata.cloudTruth, survivalWeight: metadata.survivalWeight,
-                apexSolutionTitle: metadata.apexSolutionTitle, campusVisibility: metadata.campusVisibility, lastForged: new Date().toISOString()
+                fileNode: '/' + finalPath, 
+                cloudTruth: metadata.cloudTruth, 
+                survivalWeight: metadata.survivalWeight,
+                apexSolutionTitle: metadata.apexSolutionTitle, 
+                campusVisibility: metadata.campusVisibility, 
+                lastForged: new Date().toISOString()
             });
         }
     }
