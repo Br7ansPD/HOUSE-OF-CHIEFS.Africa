@@ -2,7 +2,7 @@
   "_SOVEREIGN_FINGERPRINT": "NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION",
   "_FILE": "package.json",
   "_TARGET_REPO": "PLANETCAN-house-of-chiefs-GEN11.V6",
-  "_VERSION": "GEN 11.2 V50.010.001",
+  "_VERSION": "GEN 11.2 V50.011.001",
   "name": "titan-house-of-chiefs",
   "version": "50.010.001",
   "dependencies": {
