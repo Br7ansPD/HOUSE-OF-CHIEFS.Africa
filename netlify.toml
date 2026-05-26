@@ -3,22 +3,20 @@
 # FILE: netlify.toml
 # TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
 # SYSTEM CATEGORY: AUTH-FORTRESS
-# VERSION: GEN 11.2 V50.012.001
+# VERSION: GEN 11.2 V50.012.003
 # =========================================================================
 [build]
 command = "npm install && node forge-manifest.js"
 publish = "."
 functions = "netlify/functions"
+
 [functions]
 node_bundler = "esbuild"
+
 [[headers]]
-for = "/"
+for = "/*"
 [headers.values]
 X-Frame-Options = "DENY"
 X-Content-Type-Options = "nosniff"
-Access-Control-Allow-Origin = ""
-[[headers]]
-for = "/fleet-manifest.json"
-[headers.values]
-Access-Control-Allow-Methods = "GET, OPTIONS"
 Access-Control-Allow-Origin = "*"
+Access-Control-Allow-Methods = "GET, OPTIONS"
