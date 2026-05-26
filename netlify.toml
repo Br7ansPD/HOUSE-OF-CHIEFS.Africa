@@ -1,10 +1,10 @@
-=========================================================================
-NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION
-FILE: netlify.toml
-TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
-SYSTEM CATEGORY: AUTH-FORTRESS
-VERSION: GEN 11.2 V50.012.001
-=========================================================================
+# =========================================================================
+# NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION
+# FILE: netlify.toml
+# TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
+# SYSTEM CATEGORY: AUTH-FORTRESS
+# VERSION: GEN 11.2 V50.012.001
+# =========================================================================
 [build]
 command = "npm install && node forge-manifest.js"
 publish = "."
