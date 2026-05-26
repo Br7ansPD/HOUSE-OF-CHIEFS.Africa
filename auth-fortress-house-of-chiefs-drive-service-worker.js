@@ -4,7 +4,7 @@
  * FILE: auth-fortress-house-of-chiefs-drive-service-worker.js
  * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
  * SYSTEM CATEGORY: AUTH-FORTRESS
- * VERSION: GEN 11.2 V50.012.001
+ * VERSION: GEN 11.2 V50.012.003
  * =========================================================================
  */
 const CACHE_NAME = 'TITAN-house-of-chiefs-DRIVE-V50012002';
@@ -14,9 +14,9 @@ const ZERO_TRUST_INFRASTRUCTURE = [
     '/',
     '/index.html',
     'https://cdnjs.cloudflare.com/ajax/libs/otpauth/9.1.2/otpauth.umd.min.js',
-    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V50.012.001',
-    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V50.012.001',
-    'https://auth.planetcan.international/vault-storage.js?v=V50.012.001',
+    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V50.012.003',
+    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V50.012.003',
+    'https://auth.planetcan.international/vault-storage.js?v=V50.012.003',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 ];
