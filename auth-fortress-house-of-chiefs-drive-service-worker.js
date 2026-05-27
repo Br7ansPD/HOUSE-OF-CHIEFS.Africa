@@ -3,7 +3,7 @@
  * NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION
  * FILE: auth-fortress-house-of-chiefs-drive-service-worker.js
  * MASTER BLUEPRINT TEMPLATE: OMNI-INFRASTRUCTURE GENERATOR
- * VERSION: GEN 11.2 V50.012.005
+ * VERSION: GEN 11.2 V50.012.006
  * =========================================================================
  */
 const CACHE_NAME = 'TITAN-house-of-chiefs-DRIVE-V50012005';
@@ -13,9 +13,9 @@ const ZERO_TRUST_INFRASTRUCTURE = [
     '/',
     '/index.html',
     'https://cdnjs.cloudflare.com/ajax/libs/otpauth/9.1.2/otpauth.umd.min.js',
-    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V50.012.005',
-    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V50.012.005',
-    'https://auth.planetcan.international/vault-storage.js?v=V50.012.005',
+    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V50.012.006',
+    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V50.012.006',
+    'https://auth.planetcan.international/vault-storage.js?v=V50.012.006',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 ];
