@@ -4,7 +4,7 @@
 # MASTER BLUEPRINT TEMPLATE: OMNI-INFRASTRUCTURE GENERATOR
 # TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
 # SYSTEM CATEGORY: AUTH-FORTRESS
-# VERSION: GEN 11.2 V50.001.005
+# VERSION: GEN 11.2 V51.001.006
 # =========================================================================
 
 [build]
@@ -23,5 +23,9 @@
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
+    
+    # [V51.001.006] SOVEREIGN SYNC ENABLED
+    # Grants the Dashboard permission to inhale node data across the jurisdiction
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
