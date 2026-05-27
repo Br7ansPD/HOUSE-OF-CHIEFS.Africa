@@ -1,22 +1,27 @@
 # =========================================================================
 # NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION
 # FILE: netlify.toml
+# MASTER BLUEPRINT TEMPLATE: OMNI-INFRASTRUCTURE GENERATOR
 # TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
 # SYSTEM CATEGORY: AUTH-FORTRESS
-# VERSION: GEN 11.2 V50.012.010
+# VERSION: GEN 11.2 V51.001.001
 # =========================================================================
+
 [build]
-command = "npm install && node forge-manifest.js"
-publish = "."
-functions = "netlify/functions"
+  # Initialises dependencies and forges the Cloud Truth manifest during deployment
+  command = "npm install && node forge-manifest.js"
+  publish = "."
+  functions = "netlify/functions"
 
 [functions]
-node_bundler = "esbuild"
+  # High-performance bundling for sovereign serverless functions
+  node_bundler = "esbuild"
 
 [[headers]]
-for = "/*"
-[headers.values]
-X-Frame-Options = "DENY"
-X-Content-Type-Options = "nosniff"
-Access-Control-Allow-Origin = "*"
-Access-Control-Allow-Methods = "GET, OPTIONS"
+  # Global security perimeter for all assets within the node
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
