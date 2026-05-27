@@ -4,7 +4,7 @@
  * FILE: forge-manifest.js
  * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
  * SYSTEM CATEGORY: AUTH-FORTRESS
- * VERSION: GEN 11.2 V50.012.009
+ * VERSION: GEN 11.2 V50.012.010
  * =========================================================================
  */
 
@@ -75,7 +75,7 @@ function extractMetadata(filePath, ext, fileName) {
 }
 
 function buildManifest() {
-    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V50.012.009)...");
+    console.log("[FORGE] Initiating Cloud Truth Omni-Scan (V50.012.010)...");
     const allFiles = scanFiles(DIRECTORY_TO_SCAN);
     const manifest = [];
     const allowedExtensions = ['.html', '.js', '.toml', '.json', '.jpg', '.png', '.mp4', '.pdf', '.css', '.ico', '.webp', '.jpeg'];
