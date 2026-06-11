@@ -5,7 +5,7 @@
  * MASTER BLUEPRINT TEMPLATE: OMNI-INFRASTRUCTURE GENERATOR
  * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
  * SYSTEM CATEGORY: AUTH-FORTRESS
- * VERSION: GEN 11.2 V51.001.006
+ * VERSION: GEN 11.2 V51.001.007
  * =========================================================================
  */
 
@@ -94,20 +94,24 @@ function extractMetadata(filePath, ext, fileName) {
  * Orchestrates the Omni-Scan and writes the final fleet-manifest.json.
  */
 function buildManifest() {
-    console.log("[FORGE] Initiating [house-of-chiefs] Cloud Truth Omni-Scan (V51.001.006)...");
+    console.log("[FORGE] Initiating [house-of-chiefs] Cloud Truth Omni-Scan (V51.001.007)...");
     const allFiles = scanFiles(DIRECTORY_TO_SCAN);
     const manifest = [];
-    const allowedExtensions = ['.html', '.js', '.toml', '.json', '.jpg', '.png', '.mp4', '.pdf', '.css', '.ico', '.webp', '.jpeg'];
+    
+    // SERVER-SIDE LOCKDOWN: Do not include .toml in the final output array
+    const allowedExtensions = ['.html', '.js', '.json', '.jpg', '.png', '.mp4', '.pdf', '.css', '.ico', '.webp', '.jpeg'];
     
     for (const file of allFiles) {
         const ext = path.extname(file).toLowerCase();
         const fileName = path.basename(file);
 
         if (allowedExtensions.includes(ext)) {
-            // Skip manifest and lock files to maintain ledger integrity
+            // Absolute Server-Side Block: Never cache build scripts or node configurations
             if (file.endsWith(MANIFEST_FILE) || 
                 file.endsWith('package-lock.json') || 
-                file.endsWith('halo-comms.json')) {
+                file.endsWith('halo-comms.json') ||
+                fileName === 'forge-manifest.js' ||
+                fileName === 'package.json') {
                 continue;
             }
 
