@@ -4,11 +4,11 @@
  * FILE: auth-fortress-house-of-chiefs-drive-service-worker.js
  * MASTER BLUEPRINT TEMPLATE: OMNI-INFRASTRUCTURE GENERATOR
  * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
- * VERSION: GEN 11.2 V51.001.009
+ * VERSION: GEN 11.2 V51.001.010
  * =========================================================================
  */
 
-const CACHE_NAME = 'TITAN-house-of-chiefs-DRIVE-V50012011';
+const CACHE_NAME = 'TITAN-house-of-chiefs-DRIVE-V51001010';
 const DYNAMIC_ASSET_VAULT = 'TITAN-DYNAMIC-house-of-chiefs-ASSETS-V38';
 let activeClearanceStage = 3;
 
@@ -16,9 +16,10 @@ const ZERO_TRUST_INFRASTRUCTURE = [
     '/',
     '/index.html',
     'https://cdnjs.cloudflare.com/ajax/libs/otpauth/9.1.2/otpauth.umd.min.js',
-    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V51.001.009',
-    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V51.001.009',
-    'https://auth.planetcan.international/vault-storage.js?v=V51.001.009',
+    'https://auth.planetcan.international/auth-fortress-global-traffic-routing.js?v=V51.001.010',
+    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V51.001.010',
+    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V51.001.010',
+    'https://auth.planetcan.international/vault-storage.js?v=V51.001.010',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 ];
