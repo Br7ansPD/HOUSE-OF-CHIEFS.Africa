@@ -147,9 +147,17 @@ self.addEventListener('fetch', (event) => {
             caches.match(fetchRequest, { ignoreSearch: true }).then((cachedResponse) => {
                 if (cachedResponse) return cachedResponse;
                 return fetch(fetchRequest).then((networkResponse) => {
-                    if (!networkResponse || networkResponse.status !== 200 || (networkResponse.type !== 'basic' && networkResponse.type !== 'cors')) {
+                    
+                    if (!networkResponse) return networkResponse;
+                    
+                    // V17.2 UNIFICATION: OPAQUE RESPONSE BYPASS FOR FIREBASE STORAGE
+                    const isStandardValid = networkResponse.status === 200 && (networkResponse.type === 'basic' || networkResponse.type === 'cors');
+                    const isOpaqueFirebase = isFirebaseStorage && networkResponse.type === 'opaque';
+
+                    if (!isStandardValid && !isOpaqueFirebase) {
                         return networkResponse;
                     }
+
                     const responseToCache = networkResponse.clone();
                     if (isFirebaseStorage) {
                         caches.open(DYNAMIC_ASSET_VAULT).then((cache) => {
