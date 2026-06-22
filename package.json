@@ -1,13 +1,15 @@
 {
   "_SOVEREIGN_FINGERPRINT": "NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION",
   "_FILE": "package.json",
-  "_TARGET_REPO": "PLANETCAN-house-of-chiefs-GEN11.V6",
+  "_TARGET_REPO": "TITAN-CORE-OS-BUNDLE",
   "_SYSTEM_CATEGORY": "AUTH-FORTRESS",
-  "_VERSION": "GEN 11.2 V51.001.021",
-  "name": "titan-house-of-chiefs",
-  "version": "50.012.011",
-  "dependencies": {
-    "firebase-admin": "^11.11.0",
-    "node-fetch": "^2.7.0"
-  }
+  "_VERSION": "GEN 11.2 V51.002.001",
+  "name": "planetcan-house-of-chiefs-vanguard",
+  "version": "43.11.8",
+  "description": "195-Nation Vanguard Infrastructure Node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PLANETCAN.TECH ARCHITECT",
+  "license": "UNLICENSED"
 }
