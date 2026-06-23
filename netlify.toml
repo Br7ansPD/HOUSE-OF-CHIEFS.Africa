@@ -3,10 +3,11 @@
 # FILE: netlify.toml
 # TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
 # SYSTEM CATEGORY: AUTH-FORTRESS
-# VERSION: GEN 11.2 V51.002.004
+# VERSION: GEN 11.2 V51.002.005
 # =========================================================================
 
 [build]
+  command = "node forge-manifest.js"
   publish = "."
 
 [[headers]]
