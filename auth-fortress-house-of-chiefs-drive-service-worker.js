@@ -4,11 +4,11 @@
  * FILE: auth-fortress-house-of-chiefs-drive-service-worker.js
  * MASTER BLUEPRINT TEMPLATE: OMNI-INFRASTRUCTURE GENERATOR
  * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
- * VERSION: GEN 11.2 V51.002.003
+ * VERSION: GEN 11.2 V51.002.004
  * =========================================================================
  */
 
-const CACHE_NAME = 'TITAN-house-of-chiefs-DRIVE-V51002002';
+const CACHE_NAME = 'TITAN-house-of-chiefs-DRIVE-V51002004';
 const DYNAMIC_ASSET_VAULT = 'TITAN-DYNAMIC-house-of-chiefs-ASSETS-V51';
 let activeClearanceStage = 3;
 
@@ -16,10 +16,10 @@ const ZERO_TRUST_INFRASTRUCTURE = [
     '/',
     '/index.html',
     'https://cdnjs.cloudflare.com/ajax/libs/otpauth/9.1.2/otpauth.umd.min.js',
-    'https://auth.planetcan.international/auth-fortress-global-traffic-routing.js?v=V51.002.003',
-    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V51.002.003',
-    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V51.002.003',
-    'https://auth.planetcan.international/vault-storage.js?v=V51.002.003',
+    'https://auth.planetcan.international/auth-fortress-global-traffic-routing.js?v=V51.002.004',
+    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V51.002.004',
+    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V51.002.004',
+    'https://auth.planetcan.international/vault-storage.js?v=V51.002.004',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 ];
@@ -36,7 +36,10 @@ self.addEventListener('install', (event) => {
             
             try {
                 const response = await fetch('/fleet-manifest.json?_cb=' + Date.now());
-                if (response.ok) {
+                const contentType = response.headers.get('content-type');
+                
+                // V51.002.004 FIX: Explicit JSON validation before unpacking
+                if (response.ok && contentType && contentType.includes('application/json')) {
                     const manifest = await response.json();
                     const foundationAssets = manifest
                         .filter(node => node.survivalWeight === "FOUNDATION")
@@ -46,7 +49,7 @@ self.addEventListener('install', (event) => {
                         foundationAssets.map(url => cache.add(url).catch(err => console.warn(`[house-of-chiefs SW] Missing Foundation Node: ${url}`)))
                     );
                 } else {
-                    console.warn('[house-of-chiefs SW] Master Ledger unavailable. Relying on fallback infrastructure.');
+                    console.warn('[house-of-chiefs SW] Master Ledger unavailable or returned HTML redirect. Bypassing Foundation hydration safely.');
                 }
             } catch (err) {
                 console.error('[house-of-chiefs SW] Master Ledger connection severed during installation.', err);
