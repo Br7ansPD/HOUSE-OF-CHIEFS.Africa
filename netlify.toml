@@ -1,9 +1,9 @@
 # =========================================================================
 # NEXUS CORE ENGINE (ZERO-TRUST) - FORTRESS EDITION
 # FILE: netlify.toml
-# TARGET REPO: TITAN-CORE-OS-BUNDLE
+# TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
 # SYSTEM CATEGORY: AUTH-FORTRESS
-# VERSION: GEN 11.2 V51.002.001
+# VERSION: GEN 11.2 V51.002.002
 # =========================================================================
 
 [build]
