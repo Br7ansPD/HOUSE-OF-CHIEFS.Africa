@@ -3,7 +3,7 @@
 # FILE: netlify.toml
 # TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
 # SYSTEM CATEGORY: AUTH-FORTRESS
-# VERSION: GEN 11.2 V51.002.002
+# VERSION: GEN 11.2 V51.002.003
 # =========================================================================
 
 [build]
@@ -17,6 +17,8 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Cache-Control = "no-cache, no-store, must-revalidate"
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
 
 [[redirects]]
   from = "/*"
