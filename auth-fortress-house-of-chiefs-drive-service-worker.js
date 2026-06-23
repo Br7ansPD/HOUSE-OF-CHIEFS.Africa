@@ -4,7 +4,7 @@
  * FILE: auth-fortress-house-of-chiefs-drive-service-worker.js
  * MASTER BLUEPRINT TEMPLATE: OMNI-INFRASTRUCTURE GENERATOR
  * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
- * VERSION: GEN 11.2 V51.002.002
+ * VERSION: GEN 11.2 V51.002.003
  * =========================================================================
  */
 
@@ -16,10 +16,10 @@ const ZERO_TRUST_INFRASTRUCTURE = [
     '/',
     '/index.html',
     'https://cdnjs.cloudflare.com/ajax/libs/otpauth/9.1.2/otpauth.umd.min.js',
-    'https://auth.planetcan.international/auth-fortress-global-traffic-routing.js?v=V51.002.002',
-    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V51.002.002',
-    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V51.002.002',
-    'https://auth.planetcan.international/vault-storage.js?v=V51.002.002',
+    'https://auth.planetcan.international/auth-fortress-global-traffic-routing.js?v=V51.002.003',
+    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V51.002.003',
+    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V51.002.003',
+    'https://auth.planetcan.international/vault-storage.js?v=V51.002.003',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 ];
